@@ -12,3 +12,5 @@ Reproduction steps:
 4. Click the "Test Data Task" button once. Note that an HTTP request is made in Charles
 5. Click the "Test Data Task" button as many times as you like. Note that no HTTP requests are made in Charles
 6. Click the "Test Download Task" button as many times as you like. Note that no HTTP requests are made in Charles
+
+**Note**: If you want to repeat the test, you will have to reset the simulator, or clear the data in your device. 
