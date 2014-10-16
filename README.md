@@ -10,5 +10,5 @@ Reproduction steps:
 2. Run the app
 3. Click the "Test Download Task" button repeatedly, note in Charles that an HTTP request is made for each tap of the button
 4. Click the "Test Data Task" button once. Note that an HTTP request is made in Charles
-5. Click the "Test Data Task" button again. Note that no HTTP requests is made in Charles
-6. Click the "Test Download Task" button again. Note that no HTTP requests is made in Charles
+5. Click the "Test Data Task" button as many times as you like. Note that no HTTP requests are made in Charles
+6. Click the "Test Download Task" button as many times as you like. Note that no HTTP requests are made in Charles
