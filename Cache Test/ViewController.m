@@ -1,13 +1,29 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<NSURLSessionDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@interface ViewController ()<NSURLSessionDelegate, NSURLSessionDataDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *memoryCacheLabel;
+@property (weak, nonatomic) IBOutlet UILabel *diskCacheLabel;
+
 @end
 
 @implementation ViewController
 
 NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.png?v=3c6263c3453b";
+
+-(void)viewDidLoad {
+    [self updateCacheLabels];
+}
+
+- (void)updateCacheLabels {
+    NSString *diskCacheSize = [NSString stringWithFormat:@"DiskCache: %@ of %@", @([[NSURLCache sharedURLCache] currentDiskUsage]), @([[NSURLCache sharedURLCache] diskCapacity])];
+    NSLog(@"%@", diskCacheSize);
+    self.diskCacheLabel.text = diskCacheSize;
+    
+    NSString *memoryCacheSize = [NSString stringWithFormat:@"MemoryCache: %@ of %@", @([[NSURLCache sharedURLCache] currentMemoryUsage]), @([[NSURLCache sharedURLCache] memoryCapacity])];
+    NSLog(@"%@", memoryCacheSize);
+    self.memoryCacheLabel.text = memoryCacheSize;
+}
 
 #pragma mark - Data Task
 
@@ -22,6 +38,10 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
     NSURLRequest *request = [self buildRequestWithURL:url];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request];
     [dataTask resume];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+    [self updateCacheLabels];
 }
 
 #pragma mark - Download Task
@@ -48,4 +68,9 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
 -(NSURLRequest*)buildRequestWithURL:(NSURL*)url {
     return [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
 }
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)downloadURL {
+    [self updateCacheLabels];
+}
+
 @end

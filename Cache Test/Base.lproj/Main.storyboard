@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-ah-XN5">
-                                <rect key="frame" x="250" y="418" width="100" height="30"/>
+                                <rect key="frame" x="250" y="365" width="100" height="30"/>
                                 <state key="normal" title="Test Data Task">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,7 +26,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ful-vL-Y6y">
-                                <rect key="frame" x="232" y="235" width="137" height="30"/>
+                                <rect key="frame" x="232" y="285" width="137" height="30"/>
                                 <state key="normal" title="Test Download Task">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,15 +34,35 @@
                                     <action selector="testDownloadTaskTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Pla-f4-2Zq"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disk Cache Size:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm6-jz-OVt">
+                                <rect key="frame" x="235" y="214" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Cache Size:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygy-ZD-P0L">
+                                <rect key="frame" x="221" y="149" width="159" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sPX-ah-XN5" firstAttribute="top" secondItem="ful-vL-Y6y" secondAttribute="bottom" constant="153" id="Gf2-dL-9f7"/>
+                            <constraint firstItem="sPX-ah-XN5" firstAttribute="top" secondItem="ful-vL-Y6y" secondAttribute="bottom" constant="50" id="Gf2-dL-9f7"/>
                             <constraint firstAttribute="centerX" secondItem="ful-vL-Y6y" secondAttribute="centerX" id="Lm1-Or-MRw"/>
-                            <constraint firstAttribute="centerY" secondItem="ful-vL-Y6y" secondAttribute="centerY" constant="50" id="Unt-vM-Kdn"/>
+                            <constraint firstAttribute="centerY" secondItem="ful-vL-Y6y" secondAttribute="centerY" id="Unt-vM-Kdn"/>
+                            <constraint firstItem="Cm6-jz-OVt" firstAttribute="top" secondItem="Ygy-ZD-P0L" secondAttribute="bottom" constant="44" id="W88-V2-U8X"/>
+                            <constraint firstAttribute="centerX" secondItem="Ygy-ZD-P0L" secondAttribute="centerX" id="f7P-eG-qZc"/>
                             <constraint firstAttribute="centerX" secondItem="sPX-ah-XN5" secondAttribute="centerX" id="k1E-va-osV"/>
+                            <constraint firstAttribute="centerX" secondItem="Cm6-jz-OVt" secondAttribute="centerX" id="ko2-pi-vYW"/>
+                            <constraint firstItem="ful-vL-Y6y" firstAttribute="top" secondItem="Cm6-jz-OVt" secondAttribute="bottom" constant="50" id="sJ0-T9-r0e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="diskCacheLabel" destination="Cm6-jz-OVt" id="EkN-aU-XT5"/>
+                        <outlet property="memoryCacheLabel" destination="Ygy-ZD-P0L" id="s18-8a-gRt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
