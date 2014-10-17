@@ -46,9 +46,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rr5-ux-3l8">
+                                <rect key="frame" x="230" y="75" width="140" height="30"/>
+                                <state key="normal" title="Update Cache State">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateCacheSizes:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="34J-4a-uRK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Rr5-ux-3l8" secondAttribute="centerX" id="4Zi-bG-RWg"/>
                             <constraint firstItem="sPX-ah-XN5" firstAttribute="top" secondItem="ful-vL-Y6y" secondAttribute="bottom" constant="50" id="Gf2-dL-9f7"/>
                             <constraint firstAttribute="centerX" secondItem="ful-vL-Y6y" secondAttribute="centerX" id="Lm1-Or-MRw"/>
                             <constraint firstAttribute="centerY" secondItem="ful-vL-Y6y" secondAttribute="centerY" id="Unt-vM-Kdn"/>
@@ -56,6 +66,7 @@
                             <constraint firstAttribute="centerX" secondItem="Ygy-ZD-P0L" secondAttribute="centerX" id="f7P-eG-qZc"/>
                             <constraint firstAttribute="centerX" secondItem="sPX-ah-XN5" secondAttribute="centerX" id="k1E-va-osV"/>
                             <constraint firstAttribute="centerX" secondItem="Cm6-jz-OVt" secondAttribute="centerX" id="ko2-pi-vYW"/>
+                            <constraint firstItem="Ygy-ZD-P0L" firstAttribute="top" secondItem="Rr5-ux-3l8" secondAttribute="bottom" constant="44" id="oNJ-fB-1hB"/>
                             <constraint firstItem="ful-vL-Y6y" firstAttribute="top" secondItem="Cm6-jz-OVt" secondAttribute="bottom" constant="50" id="sJ0-T9-r0e"/>
                         </constraints>
                     </view>

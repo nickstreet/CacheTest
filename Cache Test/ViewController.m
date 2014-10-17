@@ -15,6 +15,10 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
     [self updateCacheLabels];
 }
 
+- (IBAction)updateCacheSizes:(id)sender {
+    [self updateCacheLabels];
+}
+
 - (void)updateCacheLabels {
     NSString *diskCacheSize = [NSString stringWithFormat:@"DiskCache: %@ of %@", @([[NSURLCache sharedURLCache] currentDiskUsage]), @([[NSURLCache sharedURLCache] diskCapacity])];
     NSLog(@"%@", diskCacheSize);
@@ -40,10 +44,6 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
     [dataTask resume];
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-    [self updateCacheLabels];
-}
-
 #pragma mark - Download Task
 
 - (IBAction)testDownloadTaskTapped:(id)sender {
@@ -61,7 +61,7 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
 
 -(NSURLSession*)buildSession {
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
     return session;
 }
 
@@ -69,8 +69,5 @@ NSString * const kTestUrl = @"http://cdn.sstatic.net/stackoverflow/img/sprites.p
     return [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
 }
 
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)downloadURL {
-    [self updateCacheLabels];
-}
 
 @end
